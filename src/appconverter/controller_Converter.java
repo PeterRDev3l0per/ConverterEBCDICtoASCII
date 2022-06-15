@@ -1,6 +1,5 @@
 
 package appconverter;
-import java.nio.charset.Charset;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
 
@@ -36,8 +35,9 @@ public class controller_Converter {
             return outs;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "ALGÚN CARÁCTER INGRESADO NO VÁLIDO PARA CONVERTIR A EBCDIC.","¡ERROR!",JOptionPane.WARNING_MESSAGE);
-            System.out.println(" stringToEBCDIC(); -> EXCEPCION [" +e+"]");
-            return null;
+//            System.out.println("stringToEBCDIC(); -> EXCEPCION [" +e+"]");
+            
+            return "Error, ingresa los datos correctamente o datos válidos.";
         }
         //H-->48
     }
@@ -52,12 +52,12 @@ public class controller_Converter {
                 return outs;
             } else {
                 JOptionPane.showMessageDialog(null, "ALGÚN CARÁCTER INGRESADO NO ES EBCDIC.","¡ERROR!",JOptionPane.WARNING_MESSAGE);
-                return null;
+                return "Error, ingresa los datos correctamente o datos válidos.";
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "ALGÚN CARÁCTER INGRESADO NO ES EBCDIC.","¡ERROR!",JOptionPane.WARNING_MESSAGE);
-            System.out.println(" EbcdicToSTRING(); -> EXCEPCION [" +e+"]");
-            return null;
+//            System.out.println(" EbcdicToSTRING(); -> EXCEPCION [" +e+"]");
+            return "Error, ingresa los datos correctamente o datos válidos.";
         }
         //H-->48
     }

@@ -1,7 +1,5 @@
-
 package appconverter;
 
-import java.awt.Color;
 import javax.swing.JOptionPane;
 
 public class ViewConverter extends javax.swing.JFrame {
@@ -10,8 +8,10 @@ public class ViewConverter extends javax.swing.JFrame {
         initComponents();
         this.setTitle("** CONVERTIDOR EBCDIC/STRING - V1.0.0 **  | BY:PERG");
         this.setLocationRelativeTo(null);
-        this.setResizable(false);
+        this.setResizable(true);
     }
+    
+    private controller_Converter ctrl_cv = new controller_Converter();
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -49,7 +49,7 @@ public class ViewConverter extends javax.swing.JFrame {
         });
 
         jComboBox1.setFont(new java.awt.Font("Courier New", 2, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione formato....", "STRING A EBCDIC", "EBCDIC A STRING" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione formato....", "'ASCII' A 'EBCDIC'", "'EBCDIC' A 'ASCII'" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -100,8 +100,8 @@ public class ViewConverter extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -110,19 +110,17 @@ public class ViewConverter extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String palabra = jTextField1.getText();
         if (palabra.equals("") || palabra == null) {
-            JOptionPane.showMessageDialog(null, "INGRESE DATOS","¡ERROR!",JOptionPane.WARNING_MESSAGE);
-        }else{
+            JOptionPane.showMessageDialog(null, "INGRESE DATOS", "¡ERROR!", JOptionPane.WARNING_MESSAGE);
+        } else {
             int op = jComboBox1.getSelectedIndex();
-            if (op!=0) {
-                if (op==1) {
-                    controller_Converter ctrl_cv = new controller_Converter();
-                    jTextArea1.append("EBCDIC : ["+ctrl_cv.stringToEBCDIC(palabra)+"]\n");
-                }else if(op==2){
-                    controller_Converter ctrl_cv = new controller_Converter();
-                    jTextArea1.append("UNICODE: ["+ctrl_cv.EbcdicToSTRING(palabra)+"]\n");
+            if (op != 0) {
+                if (op == 1) {
+                    jTextArea1.append("EBCDIC : [" + ctrl_cv.stringToEBCDIC(palabra) + "]\n");
+                } else if (op == 2) {
+                    jTextArea1.append("ASCII: [" + ctrl_cv.EbcdicToSTRING(palabra) + "]\n");
                 }
-            }else{
-                JOptionPane.showMessageDialog(null, "SELECCIONE OPCIÓN","¡ERROR!",JOptionPane.WARNING_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "SELECCIONE OPCIÓN", "¡ERROR!", JOptionPane.WARNING_MESSAGE);
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
